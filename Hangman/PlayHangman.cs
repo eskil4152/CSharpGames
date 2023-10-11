@@ -3,14 +3,14 @@ namespace CSharpGames.Hangman
 {
 	public class PlayHangman
 	{
-		public static void Play()
+		public static async void Play()
 		{
 			Interface.SetTitle("Hangman");
 
 			bool playing = true;
 
 
-			Console.WriteLine("Hello from hangman!");
+            await GetWord.GetRandomWordAsync();
 		}
 	}
 }
