@@ -9,9 +9,14 @@ namespace CSharpGames.Hangman
 
 			bool playing = true;
 
+			while (playing)
+			{
+				string? randomWord = await GetWord.GetRandomWordAsync();
+                Console.WriteLine("Word gotten");
 
-            await GetWord.GetRandomWordAsync();
+				Console.WriteLine("Keep playing?");
+				Console.ReadLine();
+            }
 		}
 	}
 }
-

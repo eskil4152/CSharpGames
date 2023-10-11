@@ -1,36 +1,46 @@
 ﻿using Newtonsoft.Json;
+using DotNetEnv;
 
 namespace CSharpGames.Hangman
 {
 	public class GetWord
 	{
-		public static async Task GetRandomWordAsync()
+		public static async Task<string?> GetRandomWordAsync()
 		{
-			var apiKey = "";
-			var difficulty = "easy";
+			Env.Load();
+			var apiKey = Environment.GetEnvironmentVariable("API_KEY");
 
-			Task<string> wordTask = GetWordFromApi(apiKey, difficulty);
+			if (!string.IsNullOrEmpty(apiKey))
+			{
+                string? randomWord = await GetWordFromApi(apiKey);
 
-			string randomWord = await GetWordFromApi(apiKey, difficulty);
-			Console.WriteLine("Random word: " + randomWord);
-		}
+				if (!string.IsNullOrEmpty(randomWord))
+					return randomWord;
 
-		static async Task<string> GetWordFromApi(string key, string difficulty)
+				Console.WriteLine("No word recieved");
+				return null;
+				
+            }
+
+			Console.WriteLine("No API key found");
+			return null;
+        }
+
+		static async Task<string?> GetWordFromApi(string key)
 		{
 			using (HttpClient client = new())
 			{
 				client.DefaultRequestHeaders.Add("X-RapidAPI-Key", key);
 				client.DefaultRequestHeaders.Add("X-RapidAPI-Host", "wordsapiv1.p.rapidapi.com");
 
-				HttpResponseMessage response = await client.GetAsync($"https://wordsapiv1.p.rapidapi.com/words/?difficulty={difficulty}");
+				HttpResponseMessage response = await client.GetAsync($"https://wordsapiv1.p.rapidapi.com/words/?random=true");
 
 				if (response.IsSuccessStatusCode)
 				{
 					string content = await response.Content.ReadAsStringAsync();
+					
 					ApiResponse apiResponse = JsonConvert.DeserializeObject<ApiResponse>(content);
-					List<string> words = apiResponse.Results.Data;
-					Random random = new Random();
-					string randomWord = words[random.Next(words.Count)];
+					string randomWord = apiResponse.Word;
 
 					return randomWord;
 				}
@@ -44,20 +54,8 @@ namespace CSharpGames.Hangman
 	}
 }
 
+
 public class ApiResponse
 {
-	public required Query Query { get; set; }
-	public required Results Results { get; set; }
-}
-
-public class Query
-{
-    public int Limit { get; set; }
-    public int Page { get; set; }
-}
-
-public class Results
-{
-    public int Total { get; set; }
-    public required List<string> Data { get; set; }
+    public required string Word { get; set; }
 }
