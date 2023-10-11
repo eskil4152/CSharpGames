@@ -48,7 +48,7 @@ namespace CSharpGames.NumberGuesser
 					}
 				}
 
-				playing = KeepPlaying.KeepPlayingCheck();
+				playing = KeepPlaying.KeepPlayingCheck("Number Guesser");
 			}
 
 			Interface.DisplayMessage("Hope you enjoyed your games of number guesser!");

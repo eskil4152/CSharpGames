@@ -15,11 +15,11 @@ namespace CSharpGames
 			return false;
 		}
 
-		public static bool KeepPlayingCheck()
+		public static bool KeepPlayingCheck(string? game)
 		{
 			Interface.Spacer();
 
-			Interface.DisplayMessage("Do you want to keep playing?");
+			Interface.DisplayMessage($"Do you want to keep playing {game}?");
 			Interface.DisplayMessage("If so, press 'Y'");
 			return InputCheck();
 		}
