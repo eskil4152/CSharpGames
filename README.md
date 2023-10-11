@@ -3,13 +3,14 @@
 Collection of simple games, written in C#.
 Current games are: 
 - Hangman (Not finished)
+    - Fetches random words from external API
 - Number Guesser
 - Rock, Paper, Scissor (Not finished)
 
 And more coming!
 
 ## Todo:
-- [ ] Make Number Guesser
+- [x] Make Number Guesser
 - [ ] Make Hangman
 - [ ] Make Rock, Paper, Scissor
 - [ ] Add spacers and make interface better / cleaner
