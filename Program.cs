@@ -63,4 +63,5 @@ while (playing)
     }
 }
 
+Interface.ClearScreen();
 Console.WriteLine("Bye!");

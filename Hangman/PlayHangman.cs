@@ -11,11 +11,6 @@ namespace CSharpGames.Hangman
 
 
 			Console.WriteLine("Hello from hangman!");
-
-			while (playing)
-			{
-
-			}
 		}
 	}
 }
