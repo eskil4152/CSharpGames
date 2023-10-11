@@ -24,7 +24,18 @@ namespace CSharpGames
 			Console.Write(character);
 		}
 
-		public static void DisplayError(string message)
+        public static void DisplayCharArrays(char[] chars)
+        {
+            foreach (char c in chars)
+            {
+                Interface.DisplayCharacters(c);
+                Interface.DisplayCharacters(' ');
+            }
+
+            Interface.DisplayMessage("");
+        }
+
+        public static void DisplayError(string message)
 		{
 			ConsoleColor originalColor = Console.ForegroundColor;
 
