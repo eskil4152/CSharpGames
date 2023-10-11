@@ -9,7 +9,7 @@ namespace CSharpGames.NumberGuesser
 			bool playing = true;
 			int numbersGuessed = 0;
 
-			Interface.DisplayMessage("Welcome to numberguesser!");
+			Interface.DisplayMessage("Welcome to Number Guesser!");
 
 			while (playing)
 			{
@@ -18,7 +18,6 @@ namespace CSharpGames.NumberGuesser
 
 				if (randomNumber == null)
 				{
-					Interface.DisplayMessage("Invalid input, try again.");
 					continue;
 				}
 
@@ -39,12 +38,12 @@ namespace CSharpGames.NumberGuesser
 						}
 						else
 						{
-                            Interface.DisplayMessage("Wrong, try again.");
+                            Interface.DisplayError("Wrong, try again.");
                         }
 					}
 					else
 					{
-						Interface.DisplayMessage("Invalid guess, please enter a number.");
+						Interface.DisplayError("Invalid guess, please enter a number.");
 					}
 				}
 
