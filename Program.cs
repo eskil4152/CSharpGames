@@ -25,7 +25,7 @@ while (playing)
         switch (input)
         {
             case 1:
-                PlayHangman.Play();
+                await PlayHangman.Play();
                 break;
 
             case 2:

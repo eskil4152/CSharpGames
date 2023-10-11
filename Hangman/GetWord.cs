@@ -17,12 +17,12 @@ namespace CSharpGames.Hangman
 				if (!string.IsNullOrEmpty(randomWord))
 					return randomWord;
 
-				Console.WriteLine("No word recieved");
+				Interface.DisplayError("No word recieved");
 				return null;
 				
             }
 
-			Console.WriteLine("No API key found");
+			Interface.DisplayError("No API key found");
 			return null;
         }
 
@@ -46,7 +46,7 @@ namespace CSharpGames.Hangman
 				}
 				else
 				{
-					Console.WriteLine("Error fetching words: " + response.ReasonPhrase);
+					Interface.DisplayError("Error fetching words: " + response.ReasonPhrase);
 					return null;
 				}
 			}
