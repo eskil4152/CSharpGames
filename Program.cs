@@ -44,8 +44,9 @@ while (playing)
         }
         Interface.Spacer();
 
-        Interface.DisplayMessage("Keep playing?");
-        Interface.DisplayMessage("Press y to keep playing");
+        Interface.DisplayMessage("Want to play anything else?");
+        Interface.DisplayMessage("Press 'Y' for yes");
+
         keepPlaying = Console.ReadLine();
 
         if (keepPlaying != null && keepPlaying.ToLower() != "y")

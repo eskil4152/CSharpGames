@@ -5,70 +5,53 @@ namespace CSharpGames.NumberGuesser
 	{
 		public static void Play()
 		{
-            Interface.SetTitle("Number Guesser");
-            bool playing = true;
-			bool isGuessed;
-			string? minString;
-			string? maxString;
-			string? keepPlaying;
+			Interface.SetTitle("Number Guesser");
+			bool playing = true;
+			int numbersGuessed = 0;
 
-			string? guessString;
-			int? randomNumber;
-			            
 			Interface.DisplayMessage("Welcome to numberguesser!");
 
 			while (playing)
 			{
-				isGuessed = false;
+				bool isGuessed = false;
+				int? randomNumber = RandomGenerator.GetRandomNumber();
 
-				Interface.DisplayMessage("Please enter a minimum number");
-				minString = Console.ReadLine();
-
-				Interface.DisplayMessage("Please enter a maximum number");
-				maxString = Console.ReadLine();
-
-				if (!string.IsNullOrEmpty(minString) && !string.IsNullOrEmpty(maxString) &&
-					int.TryParse(minString, out int minInt) && int.TryParse(maxString, out int maxInt))
+				if (randomNumber == null)
 				{
-					randomNumber = Range.CheckRange(minInt, maxInt);
-					if (randomNumber != null)
-					{
-                        Interface.DisplayMessage("I have chosen a number fitting your critera, please make a guess!");
-
-						while (!isGuessed)
-						{
-                            guessString = Console.ReadLine();
-
-                            if (!string.IsNullOrEmpty(guessString) && int.TryParse(guessString, out int guessInt))
-                            {
-								if (guessInt == randomNumber)
-								{
-                                    Interface.DisplayMessage("CORRECT!");
-
-									KeepPlaying.AskToKeepPlaying();
-
-									keepPlaying = Console.ReadLine();
-									playing = KeepPlaying.Check(keepPlaying);
-
-									isGuessed = true;
-                                }
-								else
-									Interface.DisplayMessage("Wrong, try again");
-                            }
-                            else
-                            {
-                                Interface.DisplayMessage("Invalid guess");
-                            }
-                        }
-                    } else
-					{
-                        Interface.DisplayMessage("Minimum must be less than maximum");
-                    }
-				} else
-				{
-					Interface.DisplayMessage("Invalid input, try again");
+					Interface.DisplayMessage("Invalid input, try again.");
+					continue;
 				}
+
+				Interface.DisplayMessage("I have chosen a number fitting your critera, please make a guess!");
+
+				while (!isGuessed)
+				{
+					string? guessString = Console.ReadLine();
+
+					if (!string.IsNullOrEmpty(guessString) && int.TryParse(guessString, out int guessInt))
+					{
+						if (guessInt == randomNumber)
+						{
+							numbersGuessed++;
+							Interface.Spacer();
+							Interface.DisplayMessage($"CORRECT! You have now guessed {numbersGuessed} numbers!");
+							isGuessed = true;
+						}
+						else
+						{
+                            Interface.DisplayMessage("Wrong, try again.");
+                        }
+					}
+					else
+					{
+						Interface.DisplayMessage("Invalid guess, please enter a number.");
+					}
+				}
+
+				playing = KeepPlaying.KeepPlayingCheck();
 			}
+
+			Interface.DisplayMessage("Hope you enjoyed your games of number guesser!");
 		}
 	}
 }

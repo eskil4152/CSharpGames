@@ -3,9 +3,11 @@ namespace CSharpGames
 {
 	public class KeepPlaying
 	{
-		public static bool Check(String? s)
+		private static bool InputCheck()
 		{
-			if (s != null && s.ToLower().Equals("y"))
+			string? input = Console.ReadLine();
+
+			if (!string.IsNullOrEmpty(input) && input.ToLower().Equals("y"))
 			{
 				return true;
 			}
@@ -13,10 +15,13 @@ namespace CSharpGames
 			return false;
 		}
 
-		public static void AskToKeepPlaying()
+		public static bool KeepPlayingCheck()
 		{
+			Interface.Spacer();
+
 			Interface.DisplayMessage("Do you want to keep playing?");
 			Interface.DisplayMessage("If so, press 'Y'");
+			return InputCheck();
 		}
 	}
 }
