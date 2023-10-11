@@ -12,6 +12,8 @@ And more coming!
 - [x] Make Number Guesser
 - [x] Make Hangman
 - [ ] Make Rock, Paper, Scissor
+- [ ] Track wins and losses per session
+- [ ] Save wins and losses in db
 - [ ] Add spacers and make interface better / cleaner
 - [ ] Check all scores from main menu
 - [ ] Locally save scores
