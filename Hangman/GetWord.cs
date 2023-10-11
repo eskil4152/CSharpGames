@@ -33,7 +33,7 @@ namespace CSharpGames.Hangman
 				client.DefaultRequestHeaders.Add("X-RapidAPI-Key", key);
 				client.DefaultRequestHeaders.Add("X-RapidAPI-Host", "wordsapiv1.p.rapidapi.com");
 
-				HttpResponseMessage response = await client.GetAsync($"https://wordsapiv1.p.rapidapi.com/words/?random=true");
+				HttpResponseMessage response = await client.GetAsync($"https://wordsapiv1.p.rapidapi.com/words?random=true");
 
 				if (response.IsSuccessStatusCode)
 				{
