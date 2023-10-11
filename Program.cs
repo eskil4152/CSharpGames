@@ -6,8 +6,6 @@ using CSharpGames.NumberGuesser;
 using CSharpGames.RockPaperScissors;
 
 bool playing = true;
-string? keepPlaying;
-string? inputString;
 
 while (playing)
 {
@@ -20,14 +18,14 @@ while (playing)
 
     Interface.Spacer();
 
-    inputString = Console.ReadLine();
+    string? inputString = Console.ReadLine();
 
     if (int.TryParse(inputString, out int input))
     {
         switch (input)
         {
             case 1:
-                PlayHangman.Play();
+                await PlayHangman.Play();
                 break;
 
             case 2:
@@ -42,17 +40,8 @@ while (playing)
                 Console.WriteLine("Invalid input");
                 continue;
         }
-        Interface.Spacer();
 
-        Interface.DisplayMessage("Want to play anything else?");
-        Interface.DisplayMessage("Press 'Y' for yes");
-
-        keepPlaying = Console.ReadLine();
-
-        if (keepPlaying != null && keepPlaying.ToLower() != "y")
-        {
-            playing = false;
-        }
+        playing = KeepPlaying.KeepPlayingCheck("C# Games");
 
         Interface.Spacer();
 

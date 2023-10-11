@@ -18,7 +18,7 @@
             }
             else
             {
-                Interface.DisplayMessage("Invalid input. Minimum must be less than maximum.");
+                Interface.DisplayError("Invalid input. Minimum must be less than maximum, and both inputs must be numbers");
                 return null;
             }
         }
