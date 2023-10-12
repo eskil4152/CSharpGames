@@ -38,7 +38,15 @@ namespace CSharpGames.NumberGuesser
 						}
 						else
 						{
-                            Interface.DisplayError("Wrong, try again.");
+							if (guessInt > randomNumber)
+							{
+								Interface.DisplayMessage("Too high");
+							}
+							else
+							{
+                                Interface.DisplayMessage("Too low.");
+                            }
+                            
                         }
 					}
 					else
