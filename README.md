@@ -13,8 +13,9 @@ And more coming!
 - [x] Make Hangman
 - [x] Make Rock, Paper, Scissor
 - [ ] Add spacers and make interface better / cleaner
+- [ ] Log highest win streak
+- [ ] Track wins and losses per session
+- [ ] Save wins and losses in db
 - [ ] Check all scores from main menu
-- [ ] Locally save scores
-      
 - [ ] Add more features
 - [ ] Add more games
