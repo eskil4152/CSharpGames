@@ -25,9 +25,11 @@ namespace CSharpGames.RockPaperScissors
 				{
 					Interface.DisplayMessage($"You win! Your {userChoice} beat my {computerChoice}!");
 					streak++;
+					Interface.DisplayMessage($"You are currently on a {streak} winning streak!");
 				} else if (result == ResultEnum.LOSE)
 				{
 					Interface.DisplayMessage($"You lose! My {computerChoice} beat your {userChoice}!");
+					Interface.DisplayMessage($"You lost your {streak} winning streak!");
 					streak = 0;
 				} else
 				{
