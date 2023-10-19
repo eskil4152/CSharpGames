@@ -67,11 +67,11 @@ namespace CSharpGames
 			{
                 string? inputString = Console.ReadLine();
 
-                if (!string.IsNullOrEmpty(inputString) || !inputString!.ToUpper().Trim().Equals("ROCK") ||
-					!inputString!.ToUpper().Trim().Equals("PAPER") ||
-					!inputString!.ToUpper().Trim().Equals("SCISSORS"))
+                if (!string.IsNullOrEmpty(inputString) && (inputString!.ToUpper().Trim().Equals("ROCK") ||
+					inputString!.ToUpper().Trim().Equals("PAPER") ||
+					inputString!.ToUpper().Trim().Equals("SCISSORS")))
                 {
-					handString = inputString;
+					handString = inputString.ToUpper();
 					validInput = true;
                 }
                 else

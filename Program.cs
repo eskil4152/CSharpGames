@@ -33,7 +33,7 @@ while (playing)
                 break;
 
             case 3:
-                PlayRockPaperScissor.Play();
+                PlayRockPaperScissors.Play();
                 break;
 
             default:

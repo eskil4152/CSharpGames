@@ -1,11 +1,11 @@
 ﻿using System;
 namespace CSharpGames.RockPaperScissors
 {
-	public enum HandValue
+	public enum ResultEnum
 	{
-		ROCK,
-		PAPER,
-		SCISSORS
+		WIN,
+		LOSE,
+		DRAW
 	}
 }
 
