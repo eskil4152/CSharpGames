@@ -12,9 +12,9 @@ while (playing)
     Interface.SetTitle("Games In C Sharp");
     
     Interface.DisplayMessage("What do you want to play?");
-    Interface.DisplayMessage("Write 1 for Hangman (Not finished yet)");
+    Interface.DisplayMessage("Write 1 for Hangman");
     Interface.DisplayMessage("Write 2 for Number Guesser");
-    Interface.DisplayMessage("Write 3 for Rock, Paper, Scissors (Not finished yet)");
+    Interface.DisplayMessage("Write 3 for Rock, Paper, Scissors");
 
     Interface.Spacer();
 
@@ -33,7 +33,7 @@ while (playing)
                 break;
 
             case 3:
-                PlayRockPaperScissor.Play();
+                PlayRockPaperScissors.Play();
                 break;
 
             default:

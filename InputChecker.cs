@@ -1,4 +1,6 @@
 ﻿using System;
+using CSharpGames.RockPaperScissors;
+
 namespace CSharpGames
 {
 	public class InputChecker
@@ -54,6 +56,32 @@ namespace CSharpGames
 			}
 
 			return inputChar;
+		}
+
+		public static HandValue RockPaperScissorsCheck()
+		{
+			bool validInput = false;
+			string handString = "";
+
+			while (!validInput)
+			{
+                string? inputString = Console.ReadLine();
+
+                if (!string.IsNullOrEmpty(inputString) && (inputString!.ToUpper().Trim().Equals("ROCK") ||
+					inputString!.ToUpper().Trim().Equals("PAPER") ||
+					inputString!.ToUpper().Trim().Equals("SCISSORS")))
+                {
+					handString = inputString.ToUpper();
+					validInput = true;
+                }
+                else
+                {
+                    Interface.DisplayError("Invalid input, please enter 'rock', 'paper' or 'sciccors'.");
+                }
+            }
+
+			HandValue handValue = (HandValue)Enum.Parse(typeof(HandValue), handString);
+			return handValue;
 		}
 	}
 }

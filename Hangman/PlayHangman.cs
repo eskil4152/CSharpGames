@@ -18,8 +18,9 @@ namespace CSharpGames.Hangman
             while (playing)
 			{
 				List<char> usedLetters = new();
+				Interface.ClearScreen();
 
-				Interface.DisplayMessage("Please wait while we get a word by random...");
+				Interface.DisplayMessage("Please wait while we get a random word...");
 
 				string? randomWord = await GetWord.GetRandomWordAsync();
 
@@ -31,7 +32,7 @@ namespace CSharpGames.Hangman
 
 				guesses = InputChecker.IntCheck();
 
-				randomWordSplit = SplitWordToArray.Splitter(randomWord);
+				randomWordSplit = CharArrayManager.Splitter(randomWord);
 				char[] correctlyGuessedLetters = new char[randomWordSplit.Length];
 
 				CharArrayManager.FillWithEmpty(correctlyGuessedLetters);
@@ -41,16 +42,7 @@ namespace CSharpGames.Hangman
 
                 while (!guessedWord && guesses > 0)
 				{
-                    Interface.ClearScreen();
-                    Interface.DisplayMessage("You have used these letters so far: ");
-                    CharArrayManager.Display(usedLetters.ToArray());
-
-                    Interface.DisplayMessage("You have correctly guessed there letters: ");
-                    CharArrayManager.Display(correctlyGuessedLetters);
-
-					Interface.Spacer();
-
-					Interface.DisplayMessage($"You have {guesses} guesses left");
+					ProgressTracker.ShowProgress(usedLetters.ToArray(), correctlyGuessedLetters, guesses);
 
 					Interface.DisplayMessage("Make a guess:");
 
@@ -72,6 +64,7 @@ namespace CSharpGames.Hangman
 
 					guessedWord = false;
 
+					Interface.Spacer();
 					Interface.DisplayMessage("Congratulations, you won!");
 					Interface.DisplayMessage($"Your current streak is {streak}");
 					playing = KeepPlaying.KeepPlayingCheck("Hangman");
@@ -79,6 +72,7 @@ namespace CSharpGames.Hangman
 				{
                     guessedWord = false;
 
+                    Interface.Spacer();
                     Interface.DisplayMessage("Sorry, you lost");
 					Interface.DisplayMessage($"You lost your {streak} winning streak");
 
